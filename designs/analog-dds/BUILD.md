@@ -1,5 +1,7 @@
 # Build the analog DDS prototype
 
+This guide is for the fixed-bias sibling board, not the original GreatScott controller. For the reference-derived circuit, use [reference-pwm/BUILD_TEST.md](reference-pwm/BUILD_TEST.md). The original sketch requires [SimpleAD9833](https://github.com/TheSpaceEgg/SimpleAD9833); the fixed-bias board's default sketch uses direct SPI instead. A compatible library example is provided under firmware/simplead9833_setup.
+
 ## 1. Parts and compatibility
 
 Use [BOM](hardware/bom.csv). Required external modules: 5 V Arduino Nano (ATmega328P), AD9833 breakout with a documented 25 MHz reference clock and 5 V-compatible interface, Bluetooth A2DP receiver with ground-referenced analog line output (not amplified bridge-tied speaker outputs), a regulated 5 V supply. Use a common ground. The board is designed for a low-voltage raw DDS triangle output; verify your exact breakout documentation. No potentiometers are provided. A different DDS output amplitude/offset is incompatible until the design is reviewed.

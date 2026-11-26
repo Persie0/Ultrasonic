@@ -1,5 +1,7 @@
 # Test the analog DDS prototype
 
+This is for the fixed-bias board only. The reference-derived PWM logic controller has a separate [build and test guide](reference-pwm/BUILD_TEST.md). Neither is a validated acoustic system.
+
 ## 1. Design and electrical prerequisites
 
 Run KiCad ERC/DRC and compare the schematic, PCB and pin map. Verify the real part footprints. Keep J4 open and do not connect a transducer. With power off check supply shorts and component polarity. Apply current-limited 5 V. Confirm 5 V at both ICs and absence of unexpected heating or resets.
