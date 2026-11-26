@@ -45,7 +45,7 @@ Keep J3 open and the acoustic load disconnected during programming and electrica
 
 ## Validation status
 
-PCB traces checked by custom geometry/connectivity logic. Baseline ESP-IDF v5.4.2 compilation passed (Playground run 45834141773). Native ERC/DRC did not run because the runner installed KiCad 7; the revised files and firmware require revalidation. See [dummy-load simulation](simulation/README.md). Firmware timing, Bluetooth interoperability and acoustic response have not been measured. Do not order boards or operate with a transducer before reviewing and completing the checklist. No exposure or loudness guarantee; narrow-band ranging transmitters may provide very weak, distorted or no audible demodulated output.
+PCB traces checked by custom geometry/connectivity logic. Baseline ESP-IDF v5.4.2 compilation passed (Playground run 45834141773). KiCad 9.0.9 subsequently reported no ERC/DRC errors or unconnected pads, but library discovery and silkscreen warnings remained. Revised firmware and RC simulation passed. The latest warning fixes require revalidation. See [dummy-load simulation](simulation/README.md). Firmware timing, Bluetooth interoperability and acoustic response have not been measured. Do not order boards or operate with a transducer before reviewing and completing the checklist. No exposure or loudness guarantee; narrow-band ranging transmitters may provide very weak, distorted or no audible demodulated output.
 
 ## References
 
