@@ -1,0 +1,22 @@
+Reference,Quantity,Value,Notes
+J1,1,5V IN,2.54 mm header
+J2,1,DDS triangle,2.54 mm header
+J3,1,BT line audio,2.54 mm header
+U1,1,LM393,DIP-8
+U2,1,TC4427A,DIP-8
+R1,1,150k,1/4W axial 7.62 mm
+R2,1,10k,1/4W axial 7.62 mm
+R3,1,100k,1/4W axial 7.62 mm
+R4,1,4.7k,1/4W axial 7.62 mm
+C1,1,1uF nonpolar,nonpolar 5.08 mm lead pitch
+C2,1,100nF,ceramic 2.54 mm lead pitch
+C3,1,100nF,ceramic 2.54 mm lead pitch
+C4,1,47uF 10V,radial 2.54 mm lead pitch
+R5,1,100R,1/4W axial 7.62 mm
+C5,1,100nF film,nonpolar 5.08 mm lead pitch
+J4,1,ARM normally open,2.54 mm header
+J5,1,DUMMY LOAD,2.54 mm header
+R6,1,100k,1/4W axial 7.62 mm
+MOD1,1,Arduino Nano,ATmega328P
+MOD2,1,AD9833 breakout,verified 25 MHz and logic compatibility
+MOD3,1,Bluetooth A2DP receiver,ground-referenced line out
