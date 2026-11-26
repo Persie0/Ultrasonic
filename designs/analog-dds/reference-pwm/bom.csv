@@ -1,0 +1,19 @@
+Reference,Quantity,Value,Notes
+J1,1,5V power,2.54 mm header
+J2,1,Nano interface,2.54 mm header
+J3,1,AD9833 module,2.54 mm header
+RV1,1,50k,3-pin inline 2.54 mm; verify actual footprint or use wires
+U1,1,MCP602,DIP-8
+R1,1,100k,1/4W axial 7.62 mm
+R2,1,20k,1/4W axial 7.62 mm
+C2,1,100nF,2.54 mm ceramic
+RV2,1,50k,3-pin inline 2.54 mm; verify actual footprint or use wires
+J4,1,Audio line input,2.54 mm header
+C1,1,1uF nonpolar,nonpolar 5.08 mm
+U2,1,LM393,DIP-8
+R3,1,1k,1/4W axial 7.62 mm
+C3,1,100nF,2.54 mm ceramic
+J5,1,PWM logic test,2.54 mm header
+C4,1,47uF 10V,radial 2.54 mm
+MOD1,1,Arduino Nano,external
+MOD2,1,AD9833 module,external
