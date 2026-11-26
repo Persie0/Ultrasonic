@@ -1,5 +1,11 @@
 # Build the analog DDS prototype
 
+![Signal flow](images/analog-overview.svg)
+
+**Goal:** build the fixed-bias electrical test board and verify each external source before connecting it. The 25 MHz reference is the AD9833 module's clock, usually supplied by its onboard oscillator; it is not the acoustic carrier.
+
+[Parts list](hardware/bom.csv) · [Schematic](hardware/analog-dds.kicad_sch) · [PCB](hardware/analog-dds.kicad_pcb)
+
 This guide is for the fixed-bias sibling board, not the original GreatScott controller. For the reference-derived circuit, use [reference-pwm/BUILD_TEST.md](reference-pwm/BUILD_TEST.md). The original sketch requires [SimpleAD9833](https://github.com/TheSpaceEgg/SimpleAD9833); the fixed-bias board's default sketch uses direct SPI instead. A compatible library example is provided under firmware/simplead9833_setup.
 
 ## 1. Parts and compatibility
@@ -12,10 +18,21 @@ Tools: KiCad 9, multimeter, soldering iron, two-channel oscilloscope or differen
 
 Open the local KiCad project, run ERC and DRC, inspect all footprints against actual components and confirm the routing against the netlist. Do not fabricate until native checks and mechanical review pass. Specify ordinary 2-layer FR4, 1.6 mm, 1 oz copper. Solder resistors first, DIP sockets (optional), ceramic/film capacitors and headers; insert LM393 and TC4427A with their notches aligned to pin 1. Leave arm jumper J4 open. Check all solder joints and resistance between supply and ground. The coupling capacitors are nonpolar. The electrolytic bulk capacitor is polarized.
 
+![Actual PCB copper preview](hardware/pcb-preview.svg)
+
 ## 3. Configure the carrier module
 
 Install Arduino IDE and select Arduino Nano with the actual processor/bootloader. Flash [dds_setup.ino](firmware/dds_setup/dds_setup.ino). For a verified 5 V-compatible AD9833 module, connect Nano D13 to SCLK, D11 to SDATA, D10 to FSYNC, ground to ground, and power according to the module datasheet. Do not connect 5 V logic to a module that only accepts 3.3 V. Verify the module waveform with a scope before connecting it to J2. If the waveform is not compatible, do not adjust the board blindly.
 
 ## 4. Connect modules
+
+| Connector | Function | Check before connection |
+|---|---|---|
+| J1 | 5 V / GND | Regulated supply and correct polarity |
+| J2 | DDS triangle / GND | Scope-verified raw module waveform |
+| J3 | Audio line / GND | Ground-referenced, not speaker-level |
+| J4 | Arm jumper | Open during assembly and idle |
+| J5 | Dummy load / GND | No acoustic load during testing |
+
 
 J1 supplies 5 V and GND. J2 accepts raw DDS triangle and GND. J3 accepts one ground-referenced Bluetooth line-out channel and GND. Never join L and R directly or attach bridge-tied speaker outputs. J4 is the removable normally-open arm shunt. J5 is a ground-referenced, AC-coupled output intended initially for a dummy capacitor. The unused LM393 comparator and TC4427A channel are held at defined input levels. Use one regulated supply with the modules' documented power paths; avoid simultaneous USB and external supply on Nano unless isolated. Pair the external Bluetooth receiver using its vendor instructions. No phone app needed. Proceed to [TEST.md](TEST.md).

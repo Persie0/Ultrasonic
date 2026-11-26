@@ -6,11 +6,24 @@ Run `python3 simulation/rc_sweep.py` from this design folder. It checks 243 dumm
 
 ## Stage B — power and idle
 
+![Differential scope connection](images/differential-measurement.svg)
+
+**Measurement setup:** turn off power before moving clips. Both oscilloscope ground clips go only to board GND. The scope math trace measures CH1 minus CH2.
+
 With J3 open and no transducer, inspect for shorts. Connect a regulated current-limited 5 V source and measure the driver supply and ESP32 rails. Stop on unexpected heating, current, reset or voltage droop. Use a two-channel oscilloscope with both probe ground clips connected only to PCB GND; use math CH1−CH2 for the differential waveform. Never ground a J2 terminal. Check that both driver outputs are low at boot and while disconnected.
 
 ## Stage C — playback on a dummy load
 
 Power down. Fit a suitable dummy capacitor in place of the transmitter. Connect the measurement probes and close J3 only for the instrumented electrical check. Pair the phone, play a quiet known test clip, observe the carrier and the differential signal; confirm approximately 40 kHz, bounded voltage, and no unexpected sustained output on pause, silence, disconnect or data loss. The ideal RC model predicts at most about 10.5 Vpp over its defined tolerance sweep, not a guaranteed hardware limit. Record measured supply, waveform, current and temperature. If the observed values differ materially, stop and investigate. Power down and remove J3 after testing.
+
+## Troubleshooting
+
+| Observation | Next action |
+|---|---|
+| Board resets when connecting | Check supply voltage and current limit; disconnect load |
+| No Bluetooth audio | Confirm original ESP32 target, serial logs and supported SBC stream |
+| Unexpected differential output when idle | Remove power and arm jumper; check firmware and wiring |
+| Hot component or unstable rail | Stop and inspect assembly before proceeding |
 
 ## Stage D — release gate
 

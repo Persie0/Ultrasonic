@@ -1,8 +1,16 @@
 # Reference PWM logic board — build and electrical test
 
+![Reference architecture](../images/reference-overview.svg)
+
+This guide covers only the logic controller derived from the supplied GreatScott schematic. It does not describe a complete speaker power stage.
+
+[Parts list](bom.csv) · [KiCad schematic](reference-pwm.kicad_sch) · [KiCad PCB](reference-pwm.kicad_pcb) · [Original source inventory](../SOURCE_FILES.md)
+
 ## Before ordering
 
 Open reference-pwm.kicad_pro in KiCad 9, run native ERC and DRC and cross-check the netlist against the original PDF. Check exact parts, potentiometer and capacitor lead pitch, power polarity and connectors. This is an unverified prototype; no fabrication approval. The source Gerbers are for a different board (transmitter), not this controller. Do not mix fabrication files.
+
+![Reference PCB copper preview](pcb-preview.svg)
 
 ## Assembly and firmware
 
@@ -15,3 +23,14 @@ Use a current-limited regulated 5 V supply and oscilloscope, with common ground.
 ## Release gate
 
 Physical assembly, mechanical review and independent native EDA validation remain outstanding. Any acoustic test requires an isolated instrumented facility and qualified exposure assessment. The original attachments do not document an exposure-certified operating limit.
+
+## Electrical test record
+
+| Check | Evidence |
+|---|---|
+| ERC / DRC | |
+| Correct installed parts and polarities | |
+| Regulated supply | |
+| DDS waveform | |
+| PWMOUT at high-impedance logic probe | |
+| Output remains disconnected from acoustic hardware | |
