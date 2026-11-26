@@ -19,4 +19,4 @@ Simulated 4860 cases (486 per count), with 1–10 ideal capacitors, each 2.04–
 
 Increasing capacitance lowers the voltage in this current-limited circuit. Ten positions do not imply ten times the useful sound, and the circuit is not validated to drive ten acoustic emitters at once. The ideal RC equations completed within the existing modeled electrical bounds. Do not extrapolate to resonance, sound pressure, directivity, exposure, physical GPIO protection or a manufacturing release. No acoustic array power/phase optimization was performed.
 
-Run `python3 ten_load_sweep.py` from this directory. It writes ten-load-results.csv and prints the maxima. The JSON summary records the independent JS calculation; CI reproduces the Python results. Existing regulator thermal/transient blockers remain.
+Run `python3 ten_load_sweep.py` from this directory. It writes ten-load-results.csv and prints the maxima. The JSON summary records the independent JS calculation; Python CI independently reproduced all 4,860 cases in [run 45846640684](https://github.com/Persie0/Playground/actions/runs/45846640684). Existing regulator thermal/transient blockers remain.

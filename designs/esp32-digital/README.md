@@ -63,3 +63,5 @@ PCB traces checked by custom geometry/connectivity logic. Baseline ESP-IDF v5.4.
 ## Integrated USB alternative
 
 [Integrated PCB](integrated/) removes the external DevKit and programming adapter. The ESP32 module, USB-UART, regulator, boot/reset switches and current-limited output are on a single board. [Power sensitivity simulation](integrated/power_simulation.md) reports passing and failing corners; physical rail and thermal validation is required. Default load is an onboard dummy capacitor. Ten optional onboard load positions are provided, all DNP. See [ten-load model](integrated/ten_load_simulation.md) and the [illustrated build/test guide](integrated/BUILD_TEST.md).
+
+All five repository KiCad projects passed native ERC/DRC in the two public validation runs. The independent review matched 263 unique pin IDs across the projects; see [review and outstanding release gates](../../VALIDATION.md).
