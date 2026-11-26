@@ -1,0 +1,1 @@
+(fp_lib_table (version 7) (lib (name "Ultrasonic")(type "KiCad")(uri "${KIPRJMOD}/Ultrasonic.pretty")(options "")(descr "Rev A embedded footprints")))

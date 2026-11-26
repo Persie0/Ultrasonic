@@ -20,7 +20,9 @@
 #define HALF 125
 #define PCM_OUT_HZ 8000
 #define SILENCE_SAMPLES 800
-#define QUEUE_SAMPLES 256
+#define QUEUE_SAMPLES 512
+#define PREFILL_SAMPLES 160
+#define MAX_TICK_GAP_US 1000
 static const char *TAG = "ultrasonic";
 static QueueHandle_t audio;
 static atomic_int rate;
@@ -30,6 +32,10 @@ static mcpwm_gen_handle_t gen_a, gen_b;
 static mcpwm_cmpr_handle_t end_a, end_b;
 static bool active;
 static unsigned quiet;
+static bool primed;
+static unsigned consumer_epoch;
+static int64_t last_tick_us;
+static atomic_bool overrun;
 
 static void mute(void) {
     mcpwm_generator_set_force_level(gen_a, 0, true);
@@ -85,15 +91,30 @@ static void sample_tick(void *arg) {
     (void)arg;
     frame_t f;
     const unsigned epoch = atomic_load(&generation);
-    if (!atomic_load(&streaming) || atomic_load(&rate) == 0) {
+    const int64_t now = esp_timer_get_time();
+    const bool delayed = last_tick_us && now - last_tick_us > MAX_TICK_GAP_US;
+    last_tick_us = now;
+    const bool overflow = atomic_exchange(&overrun, false);
+    if (consumer_epoch != epoch || delayed || overflow ||
+        !atomic_load(&streaming) || atomic_load(&rate) == 0) {
         if (active) mute();
         quiet = SILENCE_SAMPLES;
-        while (xQueueReceive(audio, &f, 0) == pdTRUE) {}
+        primed = false;
+        consumer_epoch = epoch;
+        // Bounded drain, rather than an unbounded loop in the shared timer task.
+        for (unsigned i = 0; i < QUEUE_SAMPLES; ++i)
+            if (xQueueReceive(audio, &f, 0) != pdTRUE) break;
         return;
     }
-    if (xQueueReceive(audio, &f, 0) != pdTRUE || f.epoch != epoch) {
+    if (!primed) {
+        if (uxQueueMessagesWaiting(audio) < PREFILL_SAMPLES) return;
+        primed = true;
+    }
+    if (xQueueReceive(audio, &f, 0) != pdTRUE || f.epoch != epoch ||
+        !atomic_load(&streaming) || epoch != atomic_load(&generation)) {
         if (active) mute();
         quiet = SILENCE_SAMPLES;
+        primed = false;
         return;
     }
     int sample = f.pcm;
@@ -110,6 +131,11 @@ static void sample_tick(void *arg) {
     if (mcpwm_comparator_set_compare_value(end_a, width) != ESP_OK ||
         mcpwm_comparator_set_compare_value(end_b, HALF+width) != ESP_OK) {
         mute();
+        return;
+    }
+    if (!atomic_load(&streaming) || epoch != atomic_load(&generation)) {
+        mute();
+        primed = false;
         return;
     }
     if (!active) {
@@ -147,7 +173,7 @@ static void pcm_callback(const uint8_t *data, uint32_t len) {
         if (phase >= fs) {
             phase -= fs;
             frame_t f = {.pcm = (int16_t)lp2, .epoch = epoch};
-            (void)xQueueSend(audio, &f, 0);
+            if (xQueueSend(audio, &f, 0) != pdTRUE) atomic_store(&overrun, true);
         }
     }
 }
@@ -171,6 +197,7 @@ static void a2dp_event(esp_a2d_cb_event_t event, esp_a2d_cb_param_t *p) {
         break;
     }
     case ESP_A2D_AUDIO_STATE_EVT:
+        atomic_store(&streaming, false);
         atomic_fetch_add(&generation, 1);
         atomic_store(&streaming, p->audio_stat.state == ESP_A2D_AUDIO_STATE_STARTED);
         break;

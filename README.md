@@ -6,7 +6,7 @@ A low-voltage **bench prototype** for experimenting with parametric ultrasonic a
 
 Original ESP32-WROOM-32 development board (external, four wires) receives Bluetooth Classic A2DP SBC audio. ESP32 MCPWM produces a 40 kHz carrier digitally; the TC4427A dual non-inverting DIP-8 driver buffers the two outputs from a regulated 5 V supply. A single passive 40 kHz transmitter connects across the differential output. The 100-ohm resistors limit edge current. The two 10k pull-downs keep driver inputs low while the ESP32 boots. J3 is a removable physical arm jumper and is normally open.
 
-The 47 x 29 mm two-layer PCB is hand-solderable. It deliberately uses an external development board to avoid variation in clone board width and pin arrangements. No dedicated USB circuit on the driver PCB. Both devices require a common ground.
+The 52 x 29 mm two-layer PCB is hand-solderable. It deliberately uses an external development board to avoid variation in clone board width and pin arrangements. No dedicated USB circuit on the driver PCB. Both devices require a common ground.
 
 ## Hardware
 
@@ -45,7 +45,7 @@ Keep J3 open and the acoustic load disconnected during programming and electrica
 
 ## Validation status
 
-PCB traces checked by custom geometry/connectivity logic. Native KiCad parsing, ERC, DRC, fabrication exports and ESP-IDF compilation were not run in this environment. Firmware timing, Bluetooth interoperability and acoustic response have not been measured. Do not order boards or operate with a transducer before reviewing and completing the checklist. No exposure or loudness guarantee; narrow-band ranging transmitters may provide very weak, distorted or no audible demodulated output.
+PCB traces checked by custom geometry/connectivity logic. Baseline ESP-IDF v5.4.2 compilation passed (Playground run 45834141773). Native ERC/DRC did not run because the runner installed KiCad 7; the revised files and firmware require revalidation. See [dummy-load simulation](simulation/README.md). Firmware timing, Bluetooth interoperability and acoustic response have not been measured. Do not order boards or operate with a transducer before reviewing and completing the checklist. No exposure or loudness guarantee; narrow-band ranging transmitters may provide very weak, distorted or no audible demodulated output.
 
 ## References
 

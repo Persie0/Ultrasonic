@@ -6,7 +6,7 @@ J1 pin 1: regulated 5 V, pin 2: common GND, pin 3: ESP32 GPIO25, pin 4: ESP32 GP
 
 ## Assembly
 
-All parts are through-hole. Check actual footprint sizes and polarity before fabrication. TC4427A: pin 1 is upper-left when viewed from above with notch up; pin 8 upper-right. C2 positive is the pad marked +. Use a standard straight 2-pin header and removable shunt for J3, oriented along the PCB X axis. The PCB contains embedded custom footprint outlines/pads; some are rotated relative to the referenced stock KiCad footprint. Do not blindly update footprints from the libraries. Use the editable schematic and pin/net CSV to verify layout manually. The board uses a 5.08 mm-pitch two-way terminal for an external single transmitter.
+All parts are through-hole. Check actual footprint sizes and polarity before fabrication. TC4427A: pin 1 is upper-left when viewed from above with notch up; pin 8 upper-right. C2 positive is the pad marked +. Use a standard straight 2-pin header and removable shunt for J3, oriented along the PCB X axis. The PCB has local project footprint and symbol libraries; use the included library tables. Check physical part dimensions and courtyards before fabrication. Use the editable schematic and pin/net CSV to verify layout manually. The board uses a 5.08 mm-pitch two-way terminal for an external single transmitter.
 
 ## Before manufacture
 
@@ -17,7 +17,7 @@ All parts are through-hole. Check actual footprint sizes and polarity before fab
 
 ## Electrical tests (no acoustic load)
 
-With J3 open and the transducer disconnected, check resistance between 5 V and GND before applying power. Use a current-limited source, inspect 5 V and ESP32 rail stability. On a dummy capacitive load within the transmitter's specified capacitance, measure both outputs relative to PCB ground with two oscilloscope channels or a suitable differential probe. Never clip a ground lead to a driver output. Verify low output on boot, pause, disconnect, loss of data and silence; confirm carrier frequency, matched pulse widths, bounded differential voltage and that the output shuts down. Firmware has not been built or flashed; verify against ESP-IDF v5.4.2 and test timing under Bluetooth load before connecting any acoustic device.
+With J3 open and the transducer disconnected, check resistance between 5 V and GND before applying power. Use a current-limited source, inspect 5 V and ESP32 rail stability. On a dummy capacitive load within the transmitter's specified capacitance, measure both outputs relative to PCB ground with two oscilloscope channels or a suitable differential probe. Never clip a ground lead to a driver output. Verify low output on boot, pause, disconnect, loss of data and silence; confirm carrier frequency, matched pulse widths, bounded differential voltage and that the output shuts down. Baseline firmware compiled, revised firmware has not been flashed; verify against ESP-IDF v5.4.2 and test timing under Bluetooth load before connecting any acoustic device.
 
 ## Acoustic safety / acceptance
 
