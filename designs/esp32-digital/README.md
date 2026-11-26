@@ -59,3 +59,7 @@ PCB traces checked by custom geometry/connectivity logic. Baseline ESP-IDF v5.4.
 ## Minimum-cost alternative
 
 [Passive-only GPIO interface](minimum-cost/) is a lower-output experimental variant using four resistors and no extra driver IC. [Comparison simulation](simulation/minimum_cost.md) covers 6,480 RC dummy-load cases. Keep the validated TC4427A version as the reference; the passive board is not equivalent in acoustic performance.
+
+## Integrated USB alternative
+
+[Integrated PCB](integrated/) removes the external DevKit and programming adapter. The ESP32 module, USB-UART, regulator, boot/reset switches and current-limited output are on a single board. [Power sensitivity simulation](integrated/power_simulation.md) reports passing and failing corners; physical rail and thermal validation is required. Default load is an onboard dummy capacitor.
