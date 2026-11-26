@@ -10,4 +10,4 @@ The supplied schematic uses Arduino Nano, AD9833, MCP602, LM393 and potentiomete
 - [BOM](hardware/bom.csv)
 - [Nano DDS sketch](firmware/dds_setup/dds_setup.ino)
 
-Experimental single-transmitter/dummy-load design only. Native EDA, physical and acoustic validation are outstanding; do not fabricate or use until the release gates are reviewed.
+Experimental single-transmitter/dummy-load design only. Native ERC and DRC passed with zero violations (see [validation](VALIDATION.md)); physical and acoustic validation are outstanding; do not fabricate or use until the release gates are reviewed.

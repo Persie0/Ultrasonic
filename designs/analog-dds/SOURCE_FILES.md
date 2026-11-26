@@ -19,3 +19,5 @@ The original ZIP passed CRC validation and contains ten files: two copper layers
 ## Local originals
 
 The original files belong in [original-files/](original-files/). Compare SHA-256 checksums using sha256sum (Linux), shasum -a 256 (macOS), or Get-FileHash (PowerShell). Keep the creator attribution. No physical test or fabrication approval is implied.
+
+The original sketch's Git blob SHA-1 is `d031e9ae3a76ead566b81d1ea90f4bb4ef8ad365`. The PDF and ZIP SHA-256 values above were rechecked against the supplied local files; all ten ZIP members passed CRC verification. A locally generated Git patch was applied in an empty test repository and reproduced both binary files byte-for-byte. Binary upload remains outstanding; do not mistake the inventory for actual committed attachments.
