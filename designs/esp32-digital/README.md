@@ -55,3 +55,13 @@ PCB traces checked by custom geometry/connectivity logic. Baseline ESP-IDF v5.4.
 - https://docs.espressif.com/projects/esp-idf/en/v5.4.2/esp32/api-reference/bluetooth/esp_a2dp.html
 - https://docs.espressif.com/projects/esp-idf/en/release-v5.4/esp32/api-reference/peripherals/mcpwm.html
 - https://www.canada.ca/en/health-canada/services/environmental-workplace-health/reports-publications/radiation/guidelines-safe-use-ultrasound-part-industrial-commercial-applications-safety-code-24.html
+
+## Minimum-cost alternative
+
+[Passive-only GPIO interface](minimum-cost/) is a lower-output experimental variant using four resistors and no extra driver IC. [Comparison simulation](simulation/minimum_cost.md) covers 6,480 RC dummy-load cases. Keep the validated TC4427A version as the reference; the passive board is not equivalent in acoustic performance.
+
+## Integrated USB alternative
+
+[Integrated PCB](integrated/) removes the external DevKit and programming adapter. The ESP32 module, USB-UART, regulator, boot/reset switches and current-limited output are on a single board. [Power sensitivity simulation](integrated/power_simulation.md) reports passing and failing corners; physical rail and thermal validation is required. Default load is an onboard dummy capacitor. Ten optional onboard load positions are provided, all DNP. See [ten-load model](integrated/ten_load_simulation.md) and the [illustrated build/test guide](integrated/BUILD_TEST.md).
+
+All five repository KiCad projects passed native ERC/DRC in the two public validation runs. The independent review matched 263 unique pin IDs across the projects; see [review and outstanding release gates](../../VALIDATION.md).

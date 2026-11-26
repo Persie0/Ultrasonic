@@ -8,6 +8,10 @@ Run KiCad ERC/DRC and compare the schematic, PCB and pin map. Verify the real pa
 
 ## 2. Test source modules independently
 
+![Single-ended measurement wiring](images/single-ended-measurement.svg)
+
+The analog board uses a ground-referenced output. Do not reuse this probe arrangement for the differential ESP32 board.
+
 Use an oscilloscope on the AD9833 module output before connection. Confirm the intended triangle waveform and approximately 40 kHz. The raw signal must remain within the LM393 input common-mode range and cross the fixed bias; an amplified module may not be compatible. Verify Bluetooth module output is ground-referenced line level (not BTL), with no unexpected DC or clipping. Do not use an ordinary speaker amplifier output. Stop if incompatible.
 
 ## 3. Verify analog stage with no load
@@ -17,6 +21,15 @@ Connect J2 and J3 with common ground. Measure the bias at the LM393 noninverting
 ## 4. Dummy-load test
 
 Power off, attach a suitable nonpolar dummy capacitor to J5, connect oscilloscope ground only to board ground, then fit J4 and reapply power for a supervised test. Observe output voltage, supply current and component temperature with and without audio. Verify the output coupling capacitor blocks sustained DC. Stop on excessive heating, ringing, unexplained voltage or unexpected output. Compare with the schematic and record the actual waveform; no measured waveform is supplied with this design. Power down and remove J4 after the test.
+
+## Troubleshooting
+
+| Observation | Next action |
+|---|---|
+| No carrier | Check module clock and firmware logs with the output disarmed |
+| Audio input clips | Disconnect source and check its documented line output |
+| Comparator output stuck | Stop; review bias and carrier compatibility |
+| Output persists at idle | Open J4; this board has no automatic mute |
 
 ## 5. Acoustic release gate
 

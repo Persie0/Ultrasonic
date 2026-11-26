@@ -1,0 +1,7 @@
+Reference,Quantity,Value,Notes
+R1 R2,2,10k,axial 1/4W 7.62mm
+R3 R4,2,1k,axial 1/4W 7.62mm
+J1,1,1x3 2.54mm header,GPIO and common GND only
+J2,1,1x2 2.54mm header and shunt,open by default
+J3,1,1x2 2.54mm header,differential dummy load; neither pin ground
+MOD1,1,ESP32-WROOM-32 DevKit,original Bluetooth Classic capable ESP32
