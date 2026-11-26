@@ -1,0 +1,7 @@
+# GreatScott reference PWM logic board
+
+New editable PCB and schematic based on the user-supplied one-page GreatScott PDF, dated 2024-12-29 (file dated 2024-12-30). Credit: GreatScott, [original post](https://www.patreon.com/GreatScott/posts/directional-119558088). This PCB layout is independently generated, not the supplied transmitter PCB. It ends at logic-level PWMOUT; **no power amplifier, H-bridge or transmitter connection** is included. The original PDF also ends at PWMOUT.
+
+Preserves the reference's two adjustable 50k potentiometers, MCP602 amplifier, 100k/20k feedback network, 1uF audio coupling, LM393 comparator and 1k pull-up. Differences: external Nano and DDS module headers, additional supply bypass/bulk capacitors, defined unused analog channels, nonpolar input coupling capacitor, ground-referenced logic test header. Verify component footprints (especially potentiometers) before fabrication. Do not connect a transducer to PWMOUT. The adjustment-free sibling design remains in ../hardware; neither implementation is acoustically validated.
+
+Board: 68.58 × 40.64 mm, 16 footprints, 54 plated pads, 222 segments, 0 vias. Grid routing completed; KiCad native ERC/DRC passed with zero violations; mechanical fit and physical verification remain outstanding. See [validation](../VALIDATION.md). Open [project](reference-pwm.kicad_pro). See [source inventory](../SOURCE_FILES.md) and [build/test guide](BUILD_TEST.md).
