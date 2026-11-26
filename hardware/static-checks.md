@@ -1,6 +1,5 @@
-# Static PCB geometry checks
+# Revised static geometry check
 
-- 28 plated pads, 44 trace segments, 9 named nets.
-- All pads of each named net reachable using trace endpoints and plated pads.
-- Minimum calculated pad/trace or trace/trace clearance: 0.500 mm, target 0.25 mm.
-- Calculation uses circular pad bounds; square pin-1 corners require independent KiCad DRC. No official KiCad ERC/DRC or fabrication outputs were generated. Verify library footprints, courtyard, silkscreen and actual dimensions before manufacture.
+28 plated pads, 44 trace segments. All named nets checked by trace endpoint traversal. Square pads use conservative circumscribed circles. Minimum conservative clearance 0.086 mm. Target 0.2 mm. Issues: [["C2.1 C2.2",0.08578643762690485]].
+
+This is not native KiCad DRC: no courtyard, silkscreen, annular ring, actual footprint fit, or manufacturing rule validation.
