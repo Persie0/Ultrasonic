@@ -1,6 +1,6 @@
 # Original GreatScott source inventory
 
-Author: GreatScott. [Original project post](https://www.patreon.com/GreatScott/posts/directional-119558088). Files supplied by the repository owner in the conversation and inspected locally. Keep your copies from the creator; redistribution permission was not established, so the original binaries are not republished in this public repository. The newly generated KiCad projects are not the original Gerber archive.
+Author: GreatScott. [Original project post](https://www.patreon.com/GreatScott/posts/directional-119558088). Files supplied by the repository owner in the conversation and inspected locally. The repository owner confirms that GreatScott explicitly permits resharing these attachments. The original Arduino sketch is included byte-for-byte; the original PDF and ZIP are pending binary upload due to a connector limitation. The newly generated KiCad projects are not the original Gerber archive.
 
 | Original filename | Role | SHA-256 |
 |---|---|---|
@@ -12,10 +12,10 @@ Author: GreatScott. [Original project post](https://www.patreon.com/GreatScott/p
 
 The PDF shows Arduino Nano and AD9833, MCP602, LM393, two 50k potentiometers, 100k and 20k amplifier feedback resistors, 1k comparator pull-up, and 1uF audio coupling. It terminates at PWMOUT. It does not specify a power bridge, complete power supply or acoustic exposure limits. No original editable controller CAD was supplied.
 
-The Arduino sketch includes SimpleAD9833.h, sets chip select to D10, initializes SPI and selects TRIANGLE at 40000. The loop is empty. The required library is [TheSpaceEgg/SimpleAD9833](https://github.com/TheSpaceEgg/SimpleAD9833). The repository contains an independently written equivalent initialization example and an independent direct-SPI alternative; it does not vendor the library.
+The Arduino sketch includes SimpleAD9833.h, sets chip select to D10, initializes SPI and selects TRIANGLE at 40000. The loop is empty. The required library is [TheSpaceEgg/SimpleAD9833](https://github.com/TheSpaceEgg/SimpleAD9833). The repository includes the original sketch, an equivalent initialization example and an independent direct-SPI alternative; it does not vendor the library.
 
-The original ZIP passed CRC validation and contains ten files: two copper layers, top silkscreen, two solder mask layers, a board outline, separate plated/non-plated/via drill files and an ordering note. These are manufacturing data for the transmitter board, not the PWM controller schematic or a power-stage design. Do not treat the controller PCB and this ZIP as interchangeable. Use a Gerber viewer for inspection; the original archive remains with the owner.
+The original ZIP passed CRC validation and contains ten files: two copper layers, top silkscreen, two solder mask layers, a board outline, separate plated/non-plated/via drill files and an ordering note. These are manufacturing data for the transmitter board, not the PWM controller schematic or a power-stage design. Do not treat the controller PCB and this ZIP as interchangeable. Use a Gerber viewer for inspection; the original archive is pending upload.
 
 ## Local originals
 
-Save your downloaded originals under a private local directory outside this public Git repository. Compare SHA-256 checksums using sha256sum (Linux), shasum -a 256 (macOS), or Get-FileHash (PowerShell). Keep the creator attribution. No physical test or fabrication approval is implied.
+The original files belong in [original-files/](original-files/). Compare SHA-256 checksums using sha256sum (Linux), shasum -a 256 (macOS), or Get-FileHash (PowerShell). Keep the creator attribution. No physical test or fabrication approval is implied.
