@@ -21,3 +21,7 @@ No full-power acoustic mode. The ten positions remain unpopulated by default. Se
 ## Review status
 
 See [overall release gates](../../../VALIDATION.md). A native DRC pass does not establish a verified RF ground plane, USB impedance/ESD compliance, regulator transient response or acoustic operation.
+
+## Power-only diagnostic and revised USB review
+
+Start with [POWER_TEST.md](POWER_TEST.md), not the audio firmware. [POWER_REVIEW.md](POWER_REVIEW.md) documents 756 additional screening cases, verified datasheet conditions and USB limitations. No PCB or output change in this review; no hardware release.
