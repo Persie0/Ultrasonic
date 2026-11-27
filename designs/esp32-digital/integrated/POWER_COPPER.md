@@ -31,3 +31,7 @@ Reference: [Espressif ESP32 PCB layout guidelines](https://docs.espressif.com/pr
 ## Release gates
 
 Retain the original 756-case power screening and the power-only diagnostic as separate evidence. A filled-zone DRC pass does not resolve any of the failed thermal or transient corners. Board-specific measurements and a suitable USB/RF review are required. All acoustic sites remain unpopulated and the arm open.
+
+## First native run and parity correction
+
+[Run 46070141355](https://github.com/Persie0/Playground/actions/runs/46070141355): deterministic generation and both native copper fills succeeded; ERC 0, DRC 0, unconnected pads 0. Strict schematic parity reported 123 net-name conflicts because the generated PCB uses bare root names and empty pad nets, while KiCad exports slash-prefixed root names and explicit singleton no-connect nets. The candidate-only normalization script reads the native XML export and rejects any actual pin membership discrepancy before normalizing labels. It does not change tracks, pads, zone geometry or the baseline. Strict native parity must be rerun; the first run is not a pass.
