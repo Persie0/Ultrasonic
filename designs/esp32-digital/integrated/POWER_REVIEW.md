@@ -38,3 +38,7 @@ Use the separate [power-diagnostic](power-diagnostic/) project before any audio 
 ## Evidence handling
 
 Use the [measurement template](power-measurements.csv) for actual results. No physical board records are provided. The heartbeat log cannot sense the arm jumper, rail or junction temperature. Surface temperature is not junction temperature; do not enter it as such. A model prediction, component rating or empty measurement cell is not proof of compliance. Keep idle diagnostic results separate from later qualified power and radio tests.
+
+## CI evidence
+
+[Public Playground run 46069325158](https://github.com/Persie0/Playground/actions/runs/46069325158) successfully reproduced all 756 cases and built the separate ESP-IDF 5.4.2 diagnostic (187,104-byte application, 88% of the app partition free). [Firmware and model artifact](https://github.com/Persie0/Playground/actions/runs/46069325158/artifacts/15232032576). Tested executable source: `f98322d2bd48b1d8b3b828238cacbf721257284d`; subsequent changes are documentation and a blank measurement template only. No physical measurements or hardware approval.
