@@ -34,3 +34,7 @@ Use the separate [power-diagnostic](power-diagnostic/) project before any audio 
 - Espressif ESP32 schematic checklist: https://docs.espressif.com/projects/esp-hardware-design-guidelines/en/latest/esp32/schematic-checklist.html
 - USB-IF electrical compliance updates: https://compliance.usb.org/index.asp?UpdateFile=Electrical
 - Analog Devices USB charging overview: https://www.analog.com/en/resources/technical-articles/2022/07/16/09/15/usb-battery-charging-overview--maxim-integrated.html
+
+## Evidence handling
+
+Use the [measurement template](power-measurements.csv) for actual results. No physical board records are provided. The heartbeat log cannot sense the arm jumper, rail or junction temperature. Surface temperature is not junction temperature; do not enter it as such. A model prediction, component rating or empty measurement cell is not proof of compliance. Keep idle diagnostic results separate from later qualified power and radio tests.

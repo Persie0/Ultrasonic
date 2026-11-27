@@ -22,7 +22,7 @@ idf.py set-target esp32
 idf.py build
 ```
 
-Once the power/programming interface has been verified, program via the documented manual boot/reset sequence using the appropriate serial interface. The diagnostic does not initialize Bluetooth or produce a carrier. Confirm serial heartbeat and reset reason. Both output pins should remain low, but the physical open arm is still mandatory.
+Once the power/programming interface has been verified, program via the documented manual boot/reset sequence using the appropriate serial interface. The diagnostic does not initialize Bluetooth or produce a carrier. Confirm serial heartbeat and reset reason. The printed `arm open` text is an operator instruction, not sensed hardware state. There is no arm-position sensor; verify JP1 physically before every test. GPIO configuration begins after application startup; the hardware pull-downs and open arm are still required during reset. Both output pins should remain low, but the physical open arm is still mandatory.
 
 ## 4. Record and stop
 
@@ -37,3 +37,7 @@ Once the power/programming interface has been verified, program via the document
 | Arm open and acoustic positions DNP | |
 
 If the baseline fails, do not progress to the audio firmware. Passing this test does not establish USB compliance, radio burst behavior, acoustic safety or a release for manufacture. Keep the output disarmed.
+
+## 5. Save the evidence
+
+Use [power-measurements.csv](power-measurements.csv) for the measurement record, with one row per condition and instrument configuration. Preserve oscilloscope captures separately and reference the filenames. Enter actual measured values only; never substitute the simulation values. Record board revision, component lot and ambient conditions, including measurements that fail. Blank readings mean unmeasured, not zero. See [POWER_REVIEW.md](POWER_REVIEW.md) for the screening assumptions; the model thresholds alone do not define hardware acceptance.

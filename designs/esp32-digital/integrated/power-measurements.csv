@@ -1,0 +1,1 @@
+board_id,pcb_revision,firmware_commit,condition,timestamp,ambient_C,usb_input_V,rail_idle_V,rail_min_V,rail_max_V,input_current_mA,regulator_surface_C,reset_reason,heartbeat_ok,physical_arm_open_verified,all_acoustic_sites_unpopulated_verified,scope_capture,instrument_id,operator_notes,review_status
