@@ -1,0 +1,51 @@
+{
+  "thermal": {
+    "total": 540,
+    "within": 426,
+    "headroom": 531,
+    "combined": 420,
+    "worst": 207.5124
+  },
+  "rail": {
+    "total": 216,
+    "within": 173,
+    "byCap": [
+      {
+        "effective_uF": 10,
+        "within": 18,
+        "total": 36,
+        "worst": 2.499
+      },
+      {
+        "effective_uF": 20,
+        "within": 27,
+        "total": 36,
+        "worst": 2.849
+      },
+      {
+        "effective_uF": 30,
+        "within": 28,
+        "total": 36,
+        "worst": 2.9656666666666665
+      },
+      {
+        "effective_uF": 40,
+        "within": 33,
+        "total": 36,
+        "worst": 3.024
+      },
+      {
+        "effective_uF": 50,
+        "within": 33,
+        "total": 36,
+        "worst": 3.059
+      },
+      {
+        "effective_uF": 60,
+        "within": 34,
+        "total": 36,
+        "worst": 3.082333333333333
+      }
+    ]
+  }
+}

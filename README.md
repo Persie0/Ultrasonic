@@ -23,3 +23,5 @@ The ten optional positions share one current-limited output, not ten independent
 Original GreatScott Arduino sketch is committed unchanged; the supplied PDF and Gerber ZIP are verified but not yet uploaded. See [source inventory](designs/analog-dds/SOURCE_FILES.md). The owner confirms permission to reshare the attachments.
 
 No fabrication release. No acoustic output guarantee. Do not fit an acoustic load until the separate qualified exposure and hardware review is complete.
+
+For the integrated board, see the [power-only bring-up](designs/esp32-digital/integrated/POWER_TEST.md) and [USB power review](designs/esp32-digital/integrated/POWER_REVIEW.md) before any audio tests.
